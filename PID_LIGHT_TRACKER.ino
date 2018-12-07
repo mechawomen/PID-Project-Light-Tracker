@@ -1,6 +1,5 @@
 /*
-  PID code:  Implements a PID controller using
-  analog inputs for actual and desired positions.
+  PID controller using analog inputs for actual and desired positions.
 
  The circuit: 
  * RX is digital pin 2 (connect to TX of other device)
@@ -23,13 +22,12 @@ int DTerm;
 byte Divider;
 
 /* 
-The FIRSTBOT has a PIC16F1829 controller that controls the 
-two MC33926 H-bridges on the board.  A oftware serial interface
-is used to control that part.
+ Commented section is for MC33926 serial controlled H bridge
+ Adjust for the selected H bridge.T
 */
-SoftwareSerial mySerial(2, 3); // Receive data on 2, send data on 3
-byte SerialTXBuffer[5];
-byte SerialRXBuffer[5];
+//SoftwareSerial mySerial(2, 3); // Receive data on 2, send data on 3
+//byte SerialTXBuffer[5];
+//byte SerialRXBuffer[5];
 
 void setup()  
 {
@@ -47,7 +45,7 @@ top of array.
 void GetError(void)
 {
   byte i = 0;
-  // read analogs
+  // read analogs. adjust these with a counter to record the data for the graphs
   word ActualPosition = analogRead(ActPos);  
 // comment out to speed up PID loop
 //  Serial.print("ActPos= ");
